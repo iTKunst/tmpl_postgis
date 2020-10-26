@@ -49,5 +49,5 @@ docker run ^
        --network=%NET% ^
        %IMG%
 
-CALL LOG_EXIT pGO
+call :log_exit pGO
 
