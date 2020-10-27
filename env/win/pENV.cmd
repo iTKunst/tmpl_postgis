@@ -1,5 +1,5 @@
 @echo off
-call :log_enter pENV
+call LOG_ENTER pENV
 
 CALL sENV
 
@@ -22,5 +22,5 @@ SET PROJ_VOL_DIR        =%GIS_VOL_DIR%
 
 SET PROJ_DB_NAME        =%GIS_DB_NAME%
 
-call :log_exit pENV
+call LOG_EXIT pENV
 
