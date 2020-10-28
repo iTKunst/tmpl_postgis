@@ -1,6 +1,7 @@
 @echo off
 
-call LOG_ENTER pGO
+
+CALL LOG_ENTER pGO
 
 CALL pENV
 
