@@ -1,0 +1,16 @@
+{
+  "CommandLine": "cmd /S /C echo HOST_DIR is ${HOST_DIR}",
+  "User": "root",
+  "WorkingDirectory": "C:\\",
+  "Environment": {
+    "CONT_DIR": "/opt/nano/data",
+    "HOST_DIR": "/data"
+  },
+  "CreateStdInPipe": true,
+  "CreateStdOutPipe": true,
+  "CreateStdErrPipe": true,
+  "ConsoleSize": [
+    0,
+    0
+  ]
+}
