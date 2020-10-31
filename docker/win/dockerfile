@@ -8,4 +8,4 @@ ARG HOST_DIR
 ARG CONT_DIR
 
 
-COPY ./${ENV:HOST_DIR}/*.sql /docker-entrypoint-initdb.d/
+COPY ${HOST_DIR}/*.sql /docker-entrypoint-initdb.d/
