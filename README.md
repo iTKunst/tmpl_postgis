@@ -2,64 +2,53 @@
 
 Submodule for configuring and running postgis
 
-### 1. Ensure that the global repo is available
-The global repo is a submodule that provides global functionality.  It is typically called **sub_global**
+## Check or Modify Environment variables for project
 
-### 2. Ensure that the system repo has been created
-The system repo is the single source of truth for all settings.
+#### View Global Values
+1. Open the **gENV.sh** or the **gENV.cmd** file located in the <proj_dir>/global/env folder.
+2. Go to the GEOSERVER section to view global values.  These should never be changed
+```
+# POSTGIS
 
-It needs to be named xxxx_system, where xxxx is the system identifier.  See section 5.2
-> i.e. **cvms_system**
+export GIS_CONT=$SYS_CONT$GIS_TAG
+export GIS_CONT_HOME_DIR=$OPT_DIR$GIS_DIR
+export GIS_HOST_DIR=$DOT$SYS_DIR$DATA_DIR$GIS_DIR
+export GIS_IMG=$SYS_IMG$GIS_TAG
+export GIS_PORT_INT=80
+export GIS_VOL=$SYS_VOL$GIS_TAG
 
-### 3. Create the new repo with the base template
-1. Log in to gitlab 
+export GIS_CONT_DIR=$GIS_CONT_HOME_DIR$SRC_DIR
+export GIS_CONT_DATA_DIR=$GIS_CONT_HOME_DIR$TRGT_DIR
+export GIS_VOL_DIR=$GIS_CONT_HOME_DIR$TRGT_DIR
+```
 
-> <https://gitlab.dev.ccg-gcc.gc.ca>
+#### View/Set System Values
+1. Open the **sENV_MOD.sh** or the **sENV_MOD.cmd** file located in the <sys_proj_dir>/env folder.
+2. Go to the GEOSERVER section to view default values.
+3. Modify values if required.
+4. Check in system changes.
+```
+# GEOSERVER
+export GEO_DB_NAME=
+export GEO_PASSWORD=GEO
+export GEO_PORT_EXT=8081
+export GEO_USER=pjldooley@gmail.com
 
-2. Click on **New Project**. 
-3. Select the **Import project** tab
-4. Enter the URL of the **tmpl** repo.
+```
 
-> <https://username:password@gitlab.dev.ccg-gcc.gc.ca/cvms/tmpl.git>
+5. Open the sENV_HOST.sh or the sENV_HOST.cmd file located in the <sys_proj_dir>/env folder.
+```
+# FREEIPA
+export FREE_HOST=spectre
+```
+### Update the project with the changed settings
+> Run **pUPDATE.sh** or **pUPDATE.cmd**
 
-5. Modify the URL by adding your username and password. (It is recommended that your password not have any special characters in it.)
-6. Ensure that the **Project path** has **cvms**.
-7. Enter the name of the project in **Project name**.
-8. Enter a description in **Project description**.
-9. Click **Create project**.
+### Stop and delete the container and delete the image
+> Run **pKILL.sh** or **pKILL.cmd**
 
-### 4. Clone the new repo
+### Build image
+> Run **pBUILD.sh** or **pBUILD.cmd**
 
-1. Copy the url of the repo 
-> <https://gitlab.dev.ccg-gcc.gc.ca/cvms/repo_name>
-2. In Intellij IDEA select **File/New/Project From Version Control**
-3. Ensure Version control is set to **Git**
-4. Enter the URL of the repo in the URL field
-5. Select the directory where you wish the repo to go
-6. Click **Clone**
-
-### 5. Specify the project/system values
-1. Edit **proj_root/env.sh** or **proj_root/env.bat** 
-2. Set the System identifier: 
-> **SYS**=**cvms**
-3. Set the GLOBAL GIT URL - typically:
-> **GLBL_GIT**=<https://gitlab.dev.ccg-gcc.gc.ca/cvms/sub_global>
-4. Set the PROJECT GIT URL to postgis.
-> **PROJ_GIT**=<https://gitlab.dev.ccg-gcc.gc.ca/cvms/tmpl_postgis>
-
-### 6. Load the repos into the project
-1. Run **./ADD.sh** or **ADD.bat**
-2. Run **./linux.sh** or **win.bat** to copy the commands to the root file.
-
-### 7. Update or Set the Variables for the project
-> [Edit Project variables](project/README.md)
-
-### 8. Update or Set the Variables for the system 
-> [Edit System variables](system/README.md)
-
-### 9. Build and Run
-1. Run **./build.sh** or **build.bat**
-2. Run **./run.sh** or **run.bat**
-
-### 10. Verify
-1. Run **./view.sh** or **view.bat**
+### Create and run container
+> Run **pGO.sh** or **pGO.cmd** 
